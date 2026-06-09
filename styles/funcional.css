@@ -1,0 +1,284 @@
+/* -------------------------------------------------- */ 
+/*  FUNCIONALIDADES, LO NECESARIO PARA QUE FUNCIONE   */
+/* -------------------------------------------------- */
+
+
+body{
+    margin:  0;
+    padding: 0;
+
+    font-family: system-ui, - apple-system, sans-serif;
+    background: #f8f1e9;
+    min-height: 100vh;
+}
+
+/* CONTENEDOR */
+
+.contenedor_resultados{
+    position:relative;
+    width: 100%;
+    max-width: 90vw;
+    aspect-ratio: 16/8;
+    margin: 1.5rem auto;
+    background: #fff;
+    border-radius:  12px;
+    box-shadow: 0 10px 4px rgba(0, 0,0, 12);
+    user-select: none;
+    overflow: hidden;
+}
+
+@media (max-width: 600px){
+    .contenedor_resultados{
+        max-width: 94vw;
+        aspect-ratio: 4/5;
+        margin: 1rem auto;
+        border-radius: 12px;
+    }
+}
+
+.movibles{
+    position: absolute;
+    cursor:grab;
+}
+
+.movibles:active{
+    cursor:grabbing;
+}
+
+
+/* OPCIONES DE LA IMAGEN */
+
+img{
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    user-select:none;
+    -webkit-user-drag:none;
+    pointer-events: none;
+}
+
+    /* HANDLES */
+
+.resizeHandle{
+    position: absolute;
+
+    width:16px;
+    height:16px;
+    right: -8px;
+    bottom: -8px;
+
+    border-radius: 50%;
+    border: 2px solid white;
+    background-color: #0066ff;
+
+    box-shadow: 0 2px 6px rgba(0,0,0,3);
+    
+    cursor:nwse-resize;
+    z-index: 10;
+}
+
+.rotarHandle{
+    position:absolute;
+    
+    width: 18px;
+    height: 18px;
+    top: -30px;
+    left: 50%;
+
+    border-radius: 50%;
+    border: 2px solid white;
+    background-color: #ff3f34;
+
+    box-shadow: 0 2px 6px rgba(0,0,0,3);
+    
+    transform:translateX(-50%);
+    cursor:grab;
+    z-index: 10;
+}
+
+.rotarHandle::before{
+    content:"";
+    position:absolute;
+
+    width:2px;
+    height:24px;
+    bottom:-20px;
+    left:50%;
+    
+    background:#333;
+    transform:translateX(-50%);
+}
+
+.seleccionado{
+    outline: 3px dashed blue;
+    outline-offset: 4px;
+    border-radius: 6px;
+}
+
+
+/* 
+------  BORDES Y MARCOS
+*/
+
+    /* quitar los bordes */
+.sinBorde{
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+    border: none;
+}
+
+    /* borde simple blanco */
+.conBorde{
+    position: relative;
+    background: white;
+    box-shadow: 0px 8px 24px rgba(0,0,0,15);
+    padding: 15px;
+    border-radius: 5px;
+}
+
+    /* borde polaroid (con la parte de abajo mas grande)*/
+.bordePolaroid{
+    padding: 12px 12px 80px 12px;
+    background: white;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+}
+
+    /* borde Una cinta arriba en medio */
+.bordeCinta1{
+    position: relative;
+    padding: 10px 10px 70px 10px;
+    background: white;
+    border: 10px solid white;
+    box-shadow: 0 8px 20px rgba(0,0,0,14);
+}
+
+.bordeCinta1::before{
+    position: absolute;
+    content: "";
+
+    width: 250px;
+    height: 45px;
+    top: -10%;
+    left: 50%;
+
+    /* Cambiar este color que es el fondo de la cinta */
+    background: linear-gradient( 135deg, #a1c4fd 0%, #c2e9fb 100%);
+    box-shadow:  0 4px 12px rgba(0,0,0,25);
+
+    transform: translateX(-50%) rotate(-4deg);
+    z-index: 2;
+}
+
+    /* Una cinta en cada esquina*/
+.bordeCinta2{
+    position: relative;
+    padding: 12px 12px 80px 12px;
+
+    background: white;
+    box-shadow: 0 6px 20px rgba(0,0,0, 0.10);
+    border-radius: 4px;
+}
+
+.bordeCinta2::before,
+.bordeCinta2::after{
+    position: absolute;
+    content: "";
+
+    width: 120px;
+    height: 30px;
+
+    background: linear-gradient( 135deg, #a1c4fd 0%, #c2e9fb 100%);
+    box-shadow: 0 4px 10px rgba(0,0,0, 0.25);
+    z-index: 2;
+}
+
+.bordeCinta2::before{
+    top: -10px;
+    left: -40px;
+    transform: rotate(-35deg);
+}
+
+.bordeCinta2::after{
+    bottom: -10px;
+    right: -50px;
+    transform: rotate(-30deg);
+}
+
+/* 
+----- PANEL DE HERRAMIENTAS
+*/
+
+.panelHerramientas{
+    display:flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    position: fixed;
+    white-space: nowrap;
+    overflow-x: auto;
+    max-width: 96vw;
+
+    top: 15px;
+    left: 50%;
+    padding: 10px 20px;
+
+    transform: translateX(-50%);
+    z-index: 100;
+
+    background: rgba(255,255,255, 0.96);
+    backdrop-filter: blur(10px);
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,15);
+    
+    gap: 12px;
+    font-style: 0.9rem;
+}
+
+
+.panelHerramientas h3,
+.panelHerramientas p{
+    margin: 0 8px 0 0;
+    font-size: 1.1rem;
+    white-space: nowrap;
+}
+
+.panelHerramientas button{
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    
+    border-radius: 8px;
+    border:1px solid black;
+
+    background:#f9f9f9;
+
+    cursor:pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.panelHerramientas button:hover{
+    background: #e8e8e8;
+}
+
+/*
+------ GIFS
+*/
+
+.resultadosGif{
+    pointer-events: auto;
+    
+    overflow-y: scroll;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.resultadosGif img{
+    pointer-events: auto;
+    cursor: pointer;
+}

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Album</title>
+
+        <!-- HOJAS DE ESTILO -->
+    <link rel="stylesheet" href="styles/funcional.css">
+    <link rel="stylesheet" href="styles/paginasYargollas.css">
+    <link rel="stylesheet" href="styles/diseño.css">
+
+        <!-- FUENTES DE GOOGLE-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+
+
+        <!-- CLOUDFLARE-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+        <!-- === FIREBASE SDK  === -->
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+
+</head>
+    <body>
+
+            <!-- Pantalla de Login  
+        <div id="loginScreen" class="login-screen">
+            <div class="login-box">
+                <h2>Mi Álbum Privado</h2>
+                <p>Inicia sesión con Google para acceder a tu álbum</p>
+                <button id="loginGoogleBtn" class="btn-google">
+                    <i class="fab fa-google"></i> Iniciar sesión con Google
+                </button>
+            </div>
+        </div>
+        -->
+
+        <!-- BOTON DE EDICION ARRIBA -->
+
+        <button id="logoutBtn" class="botonLogout">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Cerrar sesión</span>
+        </button>
+
+        <!-- BOTON DE CERRAR SESION -->
+
+        <button class="botonModoEdicion">
+            <i class="fas fa-pencil-alt"></i>
+            <span class="textoBoton">Editar</span>
+        </button>
+
+        <!-- PANEL DE HERRAMIENTAS -->
+         <div class="panelHerramientas oculto">
+            <h3>Herramientas</h3>
+            <button class="toolBorrar">Borrar</button>
+
+            <hr>
+
+            <p>Bordes</p>
+            <button class="toolSinBorde">Sin borde</button>
+            <button class="toolBordeSensillo">Borde</button>
+            <button class="toolBordePolaroid">Polaroid</button>
+            <button class="toolBordeCinta1">Cinta Arriba</button>
+            <button class="toolBordeCinta2">Cinta Esquinas</button>
+
+            <hr>
+
+            <p>Orden</p>
+            <button class="toolFrente">Traer al frente</button>
+            <button class="toolAtras">Enviar atrás</button>
+
+        </div>
+
+        <!-- CONTENEDOR-->
+
+        <div class="contenedor_resultados"></div>
+
+        <!-- ARGOLLAS DEL LIBRO -->
+        <div class="book-binding">
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+        </div>
+
+        <!--CONTENEDOR DE LOS BOTONES PARA SUBIR-->
+        <div class="botonesDeSubida oculto">
+            <!-- FOTO CON ESTILO DE CARPETA-->
+            <div>
+                <input 
+                    type="file"
+                    id="archivoInput" 
+                    class="subir_foto" 
+                    accept="image/*" 
+                    hidden>
+                <label for="archivoInput" class="botonSubir">
+                    <i class="fas fa-folder-open"></i>
+                    Sube una foto
+                </label>
+            </div>
+
+                <!-- TEXTOS Y TEXTOS CON LINKS -->
+            <div class="grupo-texto">
+                <input 
+                    type="text" 
+                    class="subir_texto" 
+                    placeholder="Escribe algo">
+                <input 
+                    type="text"
+                    class="añadirLink"
+                    placeholder="Añadele un link opcional">
+                <button class="boton_enviar_texto">Enviar mensaje</button>
+            </div>
+
+                <!-- STICKERS Y GIFS -->
+            <div class="grupo-sticker">
+                <div class="buscador-sticker">
+                    <input 
+                        type="text" 
+                        class="buscarGif" 
+                        placeholder="Busca un sticker">
+
+                    <button class="botonBuscarGif">Buscar</button>
+                    
+                    <div class="resultadosGif"></div>
+                </div>
+            </div>
+            
+        </div>
+
+        <p></p>
+
+            <!-- BOTONES DE PAGINADO -->
+        <div class="paginacion-inferior">
+            <button class="boton_pagina_anterior">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+
+            <p class="mostrar_pagina_actual"></p>
+
+            <button class="boton_pagina_siguiente"> 
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <p></p>
+
+
+            <!-- SCRIPTS -->
+
+        <script src="scripts/estado.js"></script>
+        <script src="scripts/firebase.js"></script>
+        <script src="scripts/cloudinary.js"></script>
+        <script src="scripts/dibujar.js"></script>
+        <script src="scripts/añadir.js"></script>
+        <script src="scripts/mover.js"></script>
+        <script src="scripts/paginas.js"></script>
+        <script src="scripts/modificar_tamaño.js"></script>
+        <script src="scripts/apis.js"></script>
+        <script src="scripts/edicion.js"></script>
+    </body>
+</html>
