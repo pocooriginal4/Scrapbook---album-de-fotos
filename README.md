@@ -15,8 +15,8 @@ An interactive digital scrapbook where you can create personalized photo albums 
 - ☁️ Automatic cloud saving per user
 - 🔐 Google login (everyone gets their own private album)
 
-<img width="1869" height="971" alt="Screanshoot1" src="https://github.com/user-attachments/assets/3e062fb5-1fc3-4399-ae1c-706197f3d231" />
-
+<img width="1869" height="971" alt="Screanshoot show mode" src="https://github.com/user-attachments/assets/778f6b4f-281a-45f5-b4de-fb6e797ef6bc" />
+<img width="1858" height="970" alt="Screanshoot edit mode" src="https://github.com/user-attachments/assets/b47b4fe4-faa8-4487-a938-f5d29f10c6d7" />
 
 ## 🛠️ Services you need to set up
 
